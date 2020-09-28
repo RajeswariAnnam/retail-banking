@@ -7,7 +7,7 @@ import { User } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    baseUrl: string = "http://localhost/angular/master/api";
+    baseUrl: string = "http://localhost/retail-banking/api";
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 

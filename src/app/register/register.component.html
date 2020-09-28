@@ -1,4 +1,4 @@
-﻿<h2>Register</h2>
+﻿<h2>Basic Information</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="firstName">First Name</label>
@@ -26,12 +26,72 @@
         <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 4 characters</div>
         </div>
     </div>
     <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="text" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"/>
+        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+            <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+            <div *ngIf="f.mobile.errors.minlength">Mobile must be 10 digits</div>
+        </div>
+    </div>
+    <h2>Address Details</h2>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
+        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors.required">Address is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }"/>
+        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+            <div *ngIf="f.city.errors.required">City is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" formControlName="state" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.state.errors }"/>
+        <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+            <div *ngIf="f.state.errors.required">State is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="pincode">Pincode</label>
+        <input type="text" formControlName="pincode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }"/>
+        <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+            <div *ngIf="f.pincode.errors.required">Pincode is required</div>
+            <div *ngIf="f.pincode.errors.minlength">Pincode must be 6 digits</div>
+        </div>
+    </div>
+    <h2>Account Details</h2>
+    <div class="form-group">
+        <label for="account">Account No</label>
+        <input type="text" formControlName="account" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.account.errors }"/>
+        <div *ngIf="submitted && f.account.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors.required">Account Number is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="type">Account type</label>
+        <select class="custom-select" formControlName="acctype">
+            <option *ngFor="let acctype of AccTypes" [ngValue]="acctype.accid">{{acctype.Name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="branch">Branch Name</label>
+        <input type="text" formControlName="branch" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.branch.errors }"/>
+        <div *ngIf="submitted && f.branch.errors" class="invalid-feedback">
+            <div *ngIf="f.branch.errors.required">Branch is required</div>
+        </div>
+     </div>
+
+    <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">Register</button>
         <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
+        <a routerLink="/list" class="btn btn-link">Cancel</a>
     </div>
 </form>

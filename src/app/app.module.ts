@@ -13,6 +13,10 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { ListUserComponent } from './list-user';
 import { EdituserComponent } from './edituser';
+import { TransferComponent } from './transfer';
+import { ListTransferComponent } from './list-transfer';
+import { SearchComponent } from './search';
+
 
 @NgModule({
     imports: [
@@ -27,8 +31,12 @@ import { EdituserComponent } from './edituser';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ListUserComponent,        
-        EdituserComponent],
+        ListUserComponent,
+        EdituserComponent,
+        TransferComponent,
+        ListTransferComponent,
+        SearchComponent
+    ],
     providers: [ ],
     bootstrap: [AppComponent]
 })

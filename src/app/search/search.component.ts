@@ -5,15 +5,15 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, UserService, AuthenticationService } from '@app/_services';
 
-@Component({templateUrl: 'register.component.html'})
-export class RegisterComponent implements OnInit {
-    registerForm: FormGroup;
+@Component({templateUrl: 'search.component.html'})
+export class SearchComponent implements OnInit {
+    searchForm: FormGroup;
     loading = false;
     submitted = false;
     // Account types
     AccTypes: any[] = [
         { accid: 'saving', Name: 'Saving' },
-        { accid: '', Name: 'Current' }
+        { accid: 'current', Name: 'Current' }
     ];
     constructor(
         private formBuilder: FormBuilder,
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.registerForm = this.formBuilder.group({
+        this.searchForm = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             username: ['', Validators.required],
@@ -47,18 +47,18 @@ export class RegisterComponent implements OnInit {
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    get f() { return this.searchForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (this.searchForm.invalid) {
            // console.log(this.registerForm.value);
             return;
         }
 
-        console.log(this.registerForm.value);
+        console.log(this.searchForm.value);
 
         this.loading = true;
         this.userService.register(this.registerForm.value)

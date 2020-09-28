@@ -12,20 +12,16 @@ $row = mysqli_fetch_assoc($result);
 
 //print_r($row);
 $user = [
-              'firstName' => $row['name'],
-              'lastName' => $row['lastname'],
-              'username' => $row['email'],
-              'mobile' => $row['mobile'],
+
               'account' => $row['account_no'],
-              'branch' => $row['branch_name'],
-              'address' => $row['address'],
-              'city' => $row['city'],
-              'state' => $row['state'],
-              'pincode' => $row['pincode'],
+              'toAccount' => '',
+              'amount' => '',
+              'desc' => '',
+              'balance' => $row['balance'],
               'id'    => $row['id']
               //'token' => 'fake-jwt-token'
             ];
-
+//print_r($user);
 echo $json = json_encode($user);
 //echo json_encode(['data'=> $json]);
 

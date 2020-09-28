@@ -1,8 +1,24 @@
 ﻿<h1>Hi {{currentUser.name}}!</h1>
 <p>You're successfully logged in!!</p>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+<button class="btn btn-success" (click)="addFund()"> Fund Transfer</button>
+    <table class="table table-striped" style="width:500px">
+        <thead>
+            <tr>
+                <th>Account No</th>
+                <th>Branch</th>
+                <th>Name</th>
+                <th>Available Balance</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{currentUser.account}}</td>
+                <td>{{currentUser.branch}}</td>
+                <td>{{currentUser.name}}</td>
+                <td>{{currentUser.balance}}</td>
+                <td><button class="btn btn-success" (click)="listTrans(currentUser.id)"> View</button></td>
+            </tr>
+        </tbody>
+    </table>
+

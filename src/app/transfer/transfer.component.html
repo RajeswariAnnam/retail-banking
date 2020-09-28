@@ -1,0 +1,44 @@
+<h2>Fund Transfer</h2>
+<form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+	<div class="form-group">
+		<label for="account">Debit Account</label>
+		<input type="text" formControlName="account" readonly="true" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.account.errors }"/>
+	</div>
+	<div class="form-group">
+		<label for="balnce">Balance</label>
+		<input type="text" formControlName="balance" readonly="true" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.balance.errors }"/>
+	</div>
+
+	<div class="form-group">
+		<label for="toAccount">Credit Account</label>
+		<input type="text" formControlName="toAccount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.toAccount.errors }"/>
+
+		<div *ngIf="submitted && f.toAccount.errors" class="invalid-feedback">
+			<div *ngIf="f.toAccount.errors.required">To Account is required</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="amount">Transfer Amount</label>
+		<input type="text" formControlName="amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"/>
+		<div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+			<div *ngIf="f.amount.errors.required">Amount is required</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="desc">Transfer Description</label>
+		<input type="text" formControlName="desc" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }"/>
+		<div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+			<div *ngIf="f.desc.errors.required">Description is required</div>
+
+		</div>
+	</div>
+	<input type="hidden" formControlName="id">
+
+
+	<div class="form-group">
+		<button [disabled]="loading" class="btn btn-primary">Transfer</button>
+		<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+			<a routerLink="/list" class="btn btn-link">Cancel</a>
+	</div>
+</form>
+

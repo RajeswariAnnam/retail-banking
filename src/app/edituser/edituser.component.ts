@@ -35,7 +35,14 @@ export class EdituserComponent implements OnInit {
             id: [''],
             username: ['', Validators.required],
             firstName: ['', Validators.required],
-            lastName: ['', Validators.required]
+            lastName: ['', Validators.required],
+            mobile: ['', [Validators.required, Validators.minLength(10)]],
+            address: ['', Validators.required],
+            city: ['', Validators.required],
+            state: ['', Validators.required],
+            pincode: ['', [Validators.required, Validators.minLength(6)]],
+            account: ['', Validators.required],
+            branch: ['', Validators.required]
 
         });
         this.userService.getUserById(+userId)

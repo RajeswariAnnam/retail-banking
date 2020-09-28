@@ -1,12 +1,34 @@
 <div >
-  <h2 style="margin: auto"> User Details</h2>
-  <button class="btn btn-danger" style="width:100px" (click)="addUser()"> Add User</button>
+  <h2 style="margin: auto"> Customer Details
+  <button class="btn btn-success" (click)="addUser()"> Add Customer</button></h2>
+
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+	<div class="form-group">
+
+<table class="table table-striped" style="width:500px">
+	<tr>
+		<td><input type="text" formControlName="search" #ttest placeholder="Enter username or account" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.search.errors }"/></td>
+		<td>
+<button class="btn btn-success" (click)="searchUser($ttest)">Search</button>
+
+		</td>
+	</tr>
+</table>
+
+	</div>
+
+</form>
   <table class="table table-striped" style="width:500px">
     <thead>
     <tr>
       <th>FirstName</th>
-      <th>LastName</th>
+
       <th>UserName</th>
+      <th>Mobile No</th>
+      <th>Address</th>
+      <th>Account</th>
+      <th>Branch</th>
+      <th>Account</th>
       <th>Delete</th>
       <th>Edit</th>
     </tr>
@@ -14,8 +36,13 @@
     <tbody>
     <tr *ngFor="let user of users">
       <td>{{user.firstName}}</td>
-      <td>{{user.lastName}}</td>
+
       <td>{{user.username}}</td>
+      <td>{{user.mobile}}</td>
+      <td>{{user.address}}</td>
+      <td>{{user.account}}</td>
+      <td>{{user.branch}}</td>
+      <td>{{user.acctype}}</td>
       <td><button class="btn btn-success" (click)="deleteUser(user.id)">Delete</button></td>
       <td><button class="btn btn-success" (click)="editUser(user.id)"> Edit</button></td>
     </tr>

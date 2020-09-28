@@ -1,0 +1,31 @@
+<div>
+	<h2 style="margin: auto">
+		Transaction Details <button class="btn btn-success" (click)="backUser()"> Back</button>
+
+	</h2>
+
+
+	<table class="table table-striped" style="width:500px">
+		<thead>
+			<tr>
+				<th>Transaction Date</th>
+				<th>Credit Account</th>
+				<th>Withdrawal</th>
+				<th>Closing Balance</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let user of users">
+				<td>{{user.Date}}</td>
+				<td>{{user.toAccount}}</td>
+				<td>{{user.amount}}</td>
+				<td>{{user.closing_bal}}</td>
+<td>{{user.id}}</td>
+
+			</tr>
+		</tbody>
+	</table>
+<button class="btn btn-success" (click)="exportTrans('17')">Download</button>
+</div>
+

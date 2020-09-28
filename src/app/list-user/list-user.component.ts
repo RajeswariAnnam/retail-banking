@@ -27,7 +27,9 @@ export class ListUserComponent implements OnInit {
 
   ngOnInit() {
     this.loadAllUsers();
+
   }
+
 
   private loadAllUsers() {
     this.userService.getAll().pipe(first()).subscribe(users => {
@@ -51,7 +53,14 @@ export class ListUserComponent implements OnInit {
     this.router.navigate(['edit']);
   };
 
+
   addUser(): void {
-    this.router.navigate(['add-user']);
+    this.router.navigate(['register']);
   };
-}
+
+  searchUser(event): void {
+
+    console.log(event.target.value);
+  }
+
+ }
