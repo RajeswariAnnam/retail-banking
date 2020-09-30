@@ -21,6 +21,12 @@ export class ListTransferComponent implements OnInit {
     }
 
     }
+  public data = [
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+  ];
 
   ngOnInit() {
     let userId = window.localStorage.getItem("editUserId");

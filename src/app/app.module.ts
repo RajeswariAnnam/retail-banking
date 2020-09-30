@@ -5,7 +5,7 @@ import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
-
+import { DataTablesModule } from 'angular-datatables';
 import { AlertComponent } from './_components';
 
 import { HomeComponent } from './home';
@@ -15,7 +15,7 @@ import { ListUserComponent } from './list-user';
 import { EdituserComponent } from './edituser';
 import { TransferComponent } from './transfer';
 import { ListTransferComponent } from './list-transfer';
-import { SearchComponent } from './search';
+//import { SearchComponent } from './search';
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import { SearchComponent } from './search';
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
+        DataTablesModule,
         routing
     ],
     declarations: [
@@ -34,8 +35,8 @@ import { SearchComponent } from './search';
         ListUserComponent,
         EdituserComponent,
         TransferComponent,
-        ListTransferComponent,
-        SearchComponent
+        ListTransferComponent
+      //  SearchComponent
     ],
     providers: [ ],
     bootstrap: [AppComponent]

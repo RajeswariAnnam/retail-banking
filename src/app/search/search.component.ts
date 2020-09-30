@@ -61,7 +61,7 @@ export class SearchComponent implements OnInit {
         console.log(this.searchForm.value);
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+       /* this.userService.register(this.registerForm.value)
         .subscribe(
             data => {
                 this.alertService.success('Registration successful', true);
@@ -70,6 +70,6 @@ export class SearchComponent implements OnInit {
             error => {
                 this.alertService.error(error);
                 this.loading = false;
-            });
+            }); */
     }
 }

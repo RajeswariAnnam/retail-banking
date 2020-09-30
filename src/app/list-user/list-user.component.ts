@@ -1,8 +1,10 @@
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, Inject, ViewChild} from '@angular/core';
 import { first } from 'rxjs/operators';
 import {Router} from "@angular/router";
+import { DataTableDirective } from 'angular-datatables';
 import { User } from '@app/_models';
 import { UserService, AuthenticationService } from '@app/_services';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-list-user',
@@ -10,7 +12,16 @@ import { UserService, AuthenticationService } from '@app/_services';
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
+  @ViewChild(DataTableDirective)
+
+  //dtElement: DataTableDirective;
+
+  dtOptions: DataTables.Settings = {};
+
+  dtTrigger: Subject<any> = new Subject();
+
   users: User[] = [];
+  dtOptions: DataTables.Settings = {};
   constructor(private router: Router, private userService: UserService,
     private authenticationService: AuthenticationService
   ) {
@@ -25,6 +36,8 @@ export class ListUserComponent implements OnInit {
       }
   }
 
+
+
   ngOnInit() {
     this.loadAllUsers();
 
@@ -34,9 +47,17 @@ export class ListUserComponent implements OnInit {
   private loadAllUsers() {
     this.userService.getAll().pipe(first()).subscribe(users => {
       this.users = users;
+      this.dtTrigger.next();
     });
+
   }
 
+  /* users = [
+
+    { firstName: 'Rajee', username: 'cust1@admin.com', mobile: '345466879780', address: 'E-city', account: '334656879DRE', branch: 'hebbal', acctype: 'saving' },
+    { firstName: 'Chinnu', username: 'cust4@admin.com', mobile: '4657689798', address: 'Hebbal', account: '23489890S', branch: 'E-city', acctype: 'saving' },
+
+  ];*/
   deleteUser(user: User): void {
     let userId = user;
     this.userService.delete(+userId)
@@ -58,9 +79,5 @@ export class ListUserComponent implements OnInit {
     this.router.navigate(['register']);
   };
 
-  searchUser(event): void {
-
-    console.log(event.target.value);
-  }
 
  }
